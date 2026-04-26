@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Connect | Admin Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // Check auth before rendering
+        if (!sessionStorage.getItem('agro_currentUser')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <nav>
+                <a href="index.html" class="logo" data-bind="siteName">🌱 Agro Connect</a>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" id="logout-btn">Logout (<span id="user-display"></span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Admin Dashboard</h2>
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <ul>
+                    <li><a href="#" data-target="panel-general" class="active">General Settings</a></li>
+                    <li><a href="#" data-target="panel-about">Edit About Info</a></li>
+                    <li><a href="#" data-target="panel-contact">Edit Contact Info</a></li>
+                    <li><a href="#" data-target="panel-activities">Manage Activities</a></li>
+                    <li><a href="#" data-target="panel-team">Manage Team</a></li>
+                </ul>
+            </aside>
+            
+            <section class="content">
+                <!-- General Panel -->
+                <div id="panel-general" class="card dashboard-panel active">
+                    <h3>General Settings</h3>
+                    <form id="form-general">
+                        <div class="form-group">
+                            <label for="input-site-name">Site Name</label>
+                            <input type="text" id="input-site-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-hero-title">Hero Title (Home Page)</label>
+                            <input type="text" id="input-hero-title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-hero-subtitle">Hero Subtitle</label>
+                            <textarea id="input-hero-subtitle" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Save General Settings</button>
+                    </form>
+                </div>
+
+                <!-- About Panel -->
+                <div id="panel-about" class="card dashboard-panel">
+                    <h3>Update About Section</h3>
+                    <form id="form-about">
+                        <div class="form-group">
+                            <label for="input-mission">Mission Statement</label>
+                            <textarea id="input-mission" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-vision">Vision Statement</label>
+                            <textarea id="input-vision" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-about">About Description</label>
+                            <textarea id="input-about" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Save About Info</button>
+                    </form>
+                </div>
+
+                <!-- Contact Panel -->
+                <div id="panel-contact" class="card dashboard-panel">
+                    <h3>Update Contact Details</h3>
+                    <form id="form-contact">
+                        <div class="form-group">
+                            <label for="input-email">Contact Email</label>
+                            <input type="email" id="input-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-phone">Contact Phone</label>
+                            <input type="text" id="input-phone" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn">Save Contact Info</button>
+                    </form>
+                </div>
+
+                <!-- Activities Panel -->
+                <div id="panel-activities" class="card dashboard-panel">
+                    <h3>Manage Activities</h3>
+                    <div id="activities-list" style="margin-bottom: 2rem;">
+                        <!-- Activities listed here by JS -->
+                    </div>
+                    <hr style="margin: 2rem 0; border: 1px solid #eee;">
+                    <h4>Add New Activity</h4>
+                    <form id="form-add-activity">
+                        <div class="form-group">
+                            <label for="activity-title">Title</label>
+                            <input type="text" id="activity-title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="activity-date">Date / Time</label>
+                            <input type="text" id="activity-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="activity-desc">Description</label>
+                            <textarea id="activity-desc" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Add Activity</button>
+                    </form>
+                </div>
+
+                <!-- Team Panel -->
+                <div id="panel-team" class="card dashboard-panel">
+                    <h3>Manage Team Members</h3>
+                    <div id="team-list" style="margin-bottom: 2rem;">
+                        <!-- Team members listed here by JS -->
+                    </div>
+                    <hr style="margin: 2rem 0; border: 1px solid #eee;">
+                    <h4>Add New Team Member</h4>
+                    <form id="form-add-team">
+                        <div class="form-group">
+                            <label for="team-name">Name</label>
+                            <input type="text" id="team-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="team-role">Role</label>
+                            <input type="text" id="team-role" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Profile Image (Upload Local OR Enter URL)</label>
+                            <input type="file" id="team-image-file" class="form-control" accept="image/*" style="margin-bottom: 0.5rem;">
+                            <input type="text" id="team-image-url" class="form-control" placeholder="Or paste image URL here...">
+                        </div>
+                        <div class="form-group">
+                            <label for="team-skills">Skills (comma separated)</label>
+                            <input type="text" id="team-skills" class="form-control" placeholder="e.g. HTML, CSS, JavaScript" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="team-bio">Bio</label>
+                            <textarea id="team-bio" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Add Team Member</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Agro Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
