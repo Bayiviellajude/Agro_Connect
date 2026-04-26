@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileBtn.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+            });
+        });
     }
 
     // Populate data from LocalStorage based on data-bind attributes

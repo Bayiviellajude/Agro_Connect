@@ -17,6 +17,30 @@ const defaultData = {
             bio: "With a strong background in software development and project coordination, he leads AgroConnect with a vision to transform agriculture through technology. He drives the development of scalable digital solutions that empower farmers, improve market access and promote sustainable agricultural growth.", 
             image: "images/img1.jpeg", 
             skills: "AI AUTOMATION, FLUTTER, REACT, IoT" 
+        },
+        { 
+            id: 2, 
+            name: "Team Member 2", 
+            role: "Specialist", 
+            bio: "Biography coming soon. Update this in the admin dashboard.", 
+            image: "images/img2.jpeg", 
+            skills: "Agriculture, Support" 
+        },
+        { 
+            id: 3, 
+            name: "Team Member 3", 
+            role: "Specialist", 
+            bio: "Biography coming soon. Update this in the admin dashboard.", 
+            image: "images/img3.jpeg", 
+            skills: "Technology, Research" 
+        },
+        { 
+            id: 4, 
+            name: "Team Member 4", 
+            role: "Specialist", 
+            bio: "Biography coming soon. Update this in the admin dashboard.", 
+            image: "images/img4.jpeg", 
+            skills: "Marketing, Outreach" 
         }
     ],
     contactEmail: "hello@agroconnect.com",
