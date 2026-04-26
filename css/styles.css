@@ -382,18 +382,28 @@ footer {
 }
 
 @media (max-width: 768px) {
+    header {
+        padding: 0.8rem 0;
+    }
+
+    nav .logo {
+        font-size: 1.5rem;
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 100%;
+        position: fixed; /* Changed to fixed for better mobile behavior */
+        top: 60px; /* Match header height */
         left: 0;
         width: 100%;
-        background-color: #2e7d32; /* Solid primary color */
+        height: calc(100vh - 60px); /* Full screen height minus header */
+        background-color: #1b5e20; /* Darker green for contrast */
         padding: 2rem 0;
         text-align: center;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         z-index: 9999;
+        overflow-y: auto;
     }
 
     .nav-links.show {
@@ -402,21 +412,31 @@ footer {
 
     .nav-links li {
         width: 100%;
-        margin: 0.5rem 0;
+        margin: 0.8rem 0;
     }
 
     .nav-links a {
         display: block;
         width: 100%;
-        padding: 1rem;
+        padding: 1.2rem;
+        font-size: 1.2rem;
+        border-radius: 0;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+        background: rgba(255,255,255,0.1);
+        transform: none;
     }
 
     .settings-icon {
-        margin: 1rem auto !important;
+        margin: 2rem auto !important;
+        width: 60px !important;
+        height: 60px !important;
     }
 
     .mobile-menu-btn {
         display: block;
+        font-size: 2rem;
     }
 
     .dashboard-layout {
@@ -430,23 +450,28 @@ footer {
     }
 
     .hero {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1rem;
+        margin-bottom: 2rem;
     }
 
     .hero h1 {
-        font-size: 2.5rem; /* Slightly smaller for mobile */
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
     }
 
     .section-title {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
     
     .card {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
     
     .card-grid {
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        grid-template-columns: 1fr; /* Force single column on small screens */
         gap: 1.5rem;
     }
 }

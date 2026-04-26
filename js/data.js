@@ -44,8 +44,8 @@ const defaultData = {
             skills: "Marketing, Outreach"
         }
     ],
-    contactEmail: "hello@agroconnect.com",
-    contactPhone: "+1 (555) 123-4567"
+    contactEmail: "agroconnect21@gmail.com",
+    contactPhone: "0501242319 / 0558191435"
 };
 
 const defaultUsers = [
