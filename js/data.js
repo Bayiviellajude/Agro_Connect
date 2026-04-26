@@ -10,8 +10,14 @@ const defaultData = {
         { id: 2, title: "Community Farm Outreach", date: "February 2026", description: "Demonstrated our prototype to 50+ local farmers." }
     ],
     team: [
-        { id: 1, name: "Alice Green", role: "Frontend Developer", bio: "Passionate about creating intuitive user interfaces for agricultural tools.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80", skills: "HTML, CSS, JavaScript, React" },
-        { id: 2, name: "Bob Seed", role: "Backend Developer", bio: "Expert in scalable systems and IoT integration for smart farms.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80", skills: "Node.js, Python, IoT, Databases" }
+        { 
+            id: 1, 
+            name: "Mr. Jude M. Bayiviella", 
+            role: "Team Leader | Software Developer, Project Coordinator & Activist", 
+            bio: "With a strong background in software development and project coordination, he leads AgroConnect with a vision to transform agriculture through technology. He drives the development of scalable digital solutions that empower farmers, improve market access and promote sustainable agricultural growth.", 
+            image: "images/img1.jpeg", 
+            skills: "AI AUTOMATION, FLUTTER, REACT, IoT" 
+        }
     ],
     contactEmail: "hello@agroconnect.com",
     contactPhone: "+1 (555) 123-4567"

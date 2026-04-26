@@ -341,6 +341,28 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.add('active');
             const targetId = link.getAttribute('data-target');
             document.getElementById(targetId).classList.add('active');
+
+            // If export panel, generate code
+            if (targetId === 'panel-export') {
+                const exportArea = document.getElementById('export-code');
+                const cleanData = JSON.parse(JSON.stringify(data));
+                exportArea.value = `const defaultData = ${JSON.stringify(cleanData, null, 4)};`;
+            }
         });
     });
+
+    // Copy to clipboard logic
+    const copyBtn = document.getElementById('btn-copy-export');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const exportArea = document.getElementById('export-code');
+            exportArea.select();
+            document.execCommand('copy');
+            const status = document.getElementById('copy-status');
+            status.style.display = 'block';
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 3000);
+        });
+    }
 });

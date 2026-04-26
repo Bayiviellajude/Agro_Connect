@@ -40,6 +40,7 @@
                     <li><a href="#" data-target="panel-contact">Edit Contact Info</a></li>
                     <li><a href="#" data-target="panel-activities">Manage Activities</a></li>
                     <li><a href="#" data-target="panel-team">Manage Team</a></li>
+                    <li><a href="#" data-target="panel-export" style="background: #e67e22; color: white;">🚀 Export to Source</a></li>
                 </ul>
             </aside>
             
@@ -157,6 +158,18 @@
                         </div>
                         <button type="submit" class="btn">Add Team Member</button>
                     </form>
+                </div>
+
+                <!-- Export Panel -->
+                <div id="panel-export" class="card dashboard-panel">
+                    <h3>🚀 Export Changes to Source</h3>
+                    <p style="margin-bottom: 1.5rem; color: #666;">Because this is a static site, changes made here only save in <strong>your browser</strong>. To make them permanent for <strong>everyone</strong>, copy the code below and paste it into your <code>js/data.js</code> file, then push to GitHub.</p>
+                    <div class="form-group">
+                        <label>Current Data (JSON for js/data.js)</label>
+                        <textarea id="export-code" class="form-control" style="height: 300px; font-family: monospace; font-size: 0.85rem;" readonly></textarea>
+                    </div>
+                    <button id="btn-copy-export" class="btn">Copy Code to Clipboard</button>
+                    <p id="copy-status" style="margin-top: 1rem; color: #27ae60; display: none;">✓ Code copied! Now paste it into js/data.js</p>
                 </div>
             </section>
         </div>
