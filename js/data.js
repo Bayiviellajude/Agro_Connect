@@ -2,12 +2,13 @@ const defaultData = {
     siteName: "🌱 Agro Connect",
     heroTitle: "Empowering the Future of Agriculture",
     heroSubtitle: "Connecting farmers, technology, and resources for a sustainable tomorrow.",
-    mission: "To revolutionize agriculture through technology, connecting farmers with resources, markets, and knowledge.",
-    vision: "A world where every farmer has the digital tools they need to thrive and feed the future.",
-    about: "Agro Connect is an innovative platform born out of a hackathon to bridge the gap between traditional farming and modern technology. We provide a suite of tools designed to optimize crop yields, manage resources efficiently, and access broader markets.",
+    mission: "To empower rural farmers with accessible, multilingual, and intelligent digital support that delivers real-time agricultural and health information through voice, text, and offline-first technologies.",
+    vision: "To create a future where every farmer, regardless of literacy or connectivity, can make informed decisions that improve productivity, health, and livelihoods through inclusive AI-driven solutions.",
+    about: "AgroConnect is an AI-powered, multilingual chatbot platform designed to support rural farmers with real-time agricultural and health information. It combines voice and text interaction, local language support, and offline-first technology to ensure accessibility for users with limited literacy or internet access. By integrating crop advisory, weather insights, pest diagnostics, veterinary support, and essential health guidance, AgroConnect serves as a reliable digital companion for farmers, extension officers, and rural health workers. The platform aims to bridge the information gap, improve productivity, promote safer farming practices, and enhance overall community well-being.",
     activities: [
-        { id: 1, title: "AgriTech Hackathon 2026", date: "April 2026", description: "First place winner for best sustainable farming solution." },
-        { id: 2, title: "Community Farm Outreach", date: "February 2026", description: "Demonstrated our prototype to 50+ local farmers." }
+        { id: 1, title: "AgriTech Hackathon 2025", date: "April 2025", description: "Shortlisted for best sustainable farming solution." },
+        { id: 2, title: "Community Farm Outreach", date: "February 2026", description: "Demonstrated our prototype to 11+ local farmers." },
+        { id: 3, title: "ATF CHALLENGE", date: "JULY 2024", description: "GROUP STAGES" }
     ],
     team: [
         { 
