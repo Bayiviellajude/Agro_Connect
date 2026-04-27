@@ -1,3 +1,4 @@
+// Team data updated for live site
 const defaultData = {
     siteName: "🌱 Agro Connect",
     heroTitle: "Empowering the Future of Agriculture",
