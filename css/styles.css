@@ -120,13 +120,40 @@ nav .nav-links a:hover, nav .nav-links a.active {
     transform: rotate(90deg);
 }
 
+/* Hamburger button — hidden on desktop */
 .mobile-menu-btn {
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
     background: none;
     border: none;
-    color: var(--text-light);
-    font-size: 1.8rem;
     cursor: pointer;
+    padding: 6px;
+    z-index: 10001;
+}
+
+.mobile-menu-btn .bar {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--text-light);
+    border-radius: 3px;
+    transition: all 0.35s ease;
+    transform-origin: center;
+}
+
+/* Animate hamburger → X when open */
+.mobile-menu-btn.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.mobile-menu-btn.open .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.mobile-menu-btn.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Main Content */
@@ -381,7 +408,8 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+/* ── Tablet & Mobile (≤ 900px) ──────────────────────────────── */
+@media (max-width: 900px) {
     header {
         padding: 0.8rem 0;
     }
@@ -390,55 +418,72 @@ footer {
         font-size: 1.5rem;
     }
 
+    /* Show hamburger */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* Nav drawer — slides down from under header */
     .nav-links {
-        display: none;
+        display: flex;              /* always flex, but height = 0 */
         flex-direction: column;
-        position: fixed; /* Changed to fixed for better mobile behavior */
-        top: 60px; /* Match header height */
+        align-items: stretch;
+        position: fixed;
+        top: 0;
         left: 0;
         width: 100%;
-        height: calc(100vh - 60px); /* Full screen height minus header */
-        background-color: #1b5e20; /* Darker green for contrast */
-        padding: 2rem 0;
-        text-align: center;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        max-height: 0;
+        overflow: hidden;
+        background: rgba(27, 94, 32, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 0;
         z-index: 9999;
-        overflow-y: auto;
+        transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1),
+                    padding 0.4s ease,
+                    box-shadow 0.4s ease;
+        box-shadow: none;
+        text-align: center;
     }
 
     .nav-links.show {
-        display: flex;
+        max-height: 100vh;
+        padding: 5rem 0 2rem; /* top gap clears the sticky header */
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
 
     .nav-links li {
         width: 100%;
-        margin: 0.8rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
     }
 
     .nav-links a {
         display: block;
-        width: 100%;
-        padding: 1.2rem;
-        font-size: 1.2rem;
+        padding: 1.1rem 2rem;
+        font-size: 1.15rem;
         border-radius: 0;
+        width: 100%;
     }
 
-    .nav-links a:hover, .nav-links a.active {
-        background: rgba(255,255,255,0.1);
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(251, 192, 45, 0.15);
+        color: var(--secondary-color);
         transform: none;
+        box-shadow: none;
     }
 
     .settings-icon {
-        margin: 2rem auto !important;
-        width: 60px !important;
-        height: 60px !important;
+        margin: 0.8rem auto !important;
+        width: 56px !important;
+        height: 56px !important;
     }
 
-    .mobile-menu-btn {
-        display: block;
-        font-size: 2rem;
-    }
-
+    /* Layout */
     .dashboard-layout {
         grid-template-columns: 1fr;
     }
@@ -455,7 +500,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .hero p {
@@ -463,15 +508,15 @@ footer {
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
-    
+
     .card {
-        padding: 1.2rem;
+        padding: 1.4rem;
     }
-    
+
     .card-grid {
-        grid-template-columns: 1fr; /* Force single column on small screens */
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 }

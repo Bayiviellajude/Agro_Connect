@@ -1,18 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    // ── Responsive Mobile Nav ────────────────────────────────
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const navLinks  = document.querySelector('.nav-links');
+
+    function openMenu() {
+        navLinks.classList.add('show');
+        mobileBtn.classList.add('open');
+        mobileBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden'; // prevent scroll when open
+    }
+
+    function closeMenu() {
+        navLinks.classList.remove('show');
+        mobileBtn.classList.remove('open');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
 
     if (mobileBtn && navLinks) {
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
+        // Toggle on button click
+        mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.contains('show') ? closeMenu() : openMenu();
         });
 
-        // Close menu when a link is clicked
+        // Close when any nav link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('show');
-            });
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close when clicking outside the nav
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('show') &&
+                !navLinks.contains(e.target) &&
+                !mobileBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
         });
     }
 
