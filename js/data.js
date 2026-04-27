@@ -21,27 +21,27 @@ const defaultData = {
         },
         {
             id: 2,
-            name: "Team Member 2",
-            role: "Specialist",
-            bio: "Biography coming soon. Update this in the admin dashboard.",
+            name: "Mr Alipio Burebe Ebenezer",
+            role: "UI/UX Designer & Co-Researcher",
+            bio: "Holding a BSc in Computer Science, He's dedicated to digitizing the agricultural landscape. He specializes in designing robust digital frameworks and accessible interfaces for AgroConnect, turning complex data into intuitive tools that drive farmer productivity and market connectivity.",
             image: "images/img2.jpeg",
-            skills: "Agriculture, Support"
+            skills: "UI/UX, RESEARCHER, IoT, GRAPHIC DESIGNER"
         },
         {
             id: 3,
-            name: "Team Member 3",
-            role: "Specialist",
-            bio: "Biography coming soon. Update this in the admin dashboard.",
+            name: "Mr. Jude Sangzie",
+            role: "Graphic Designer & Program Organizer",
+            bio: "A creative Graphic Designer with a strong focus on visual communication and brand identity. He designs engaging graphics for both digital and print platforms. He also supports program planning and coordination, ensuring smooth and successful events.",
             image: "images/img3.jpeg",
-            skills: "Technology, Research"
+            skills: "GRAPHIC DESIGNER, PYTHON, UI/UX, EDITOR"
         },
         {
             id: 4,
-            name: "Team Member 4",
-            role: "Specialist",
-            bio: "Biography coming soon. Update this in the admin dashboard.",
+            name: "Asaboayine Yvonne Ayinpoka",
+            role: "Front-End Designer & Researcher",
+            bio: "With a strong passion for technology and innovation, she contributes to the AgroConnect project by designing responsive and user-friendly interfaces that connect farmers to digital agricultural solutions. She also supports research activities aimed at improving how agricultural data and services are delivered. Her work focuses on creating simple, practical, and accessible digital tools that enhance productivity and strengthen market access for farmers.",
             image: "images/img4.jpeg",
-            skills: "Marketing, Outreach"
+            skills: "FRONT END DESIGNER, RESEARCHER, WRITTER, PRESENTER"
         }
     ],
     contactEmail: "agroconnect21@gmail.com",
@@ -55,6 +55,13 @@ const defaultUsers = [
 function initData() {
     if (!localStorage.getItem('agro_data')) {
         localStorage.setItem('agro_data', JSON.stringify(defaultData));
+    } else {
+        // Force update team if it contains demo members
+        const storedData = JSON.parse(localStorage.getItem('agro_data'));
+        if (storedData.team && storedData.team.some(m => m.name.includes("Team Member"))) {
+            storedData.team = defaultData.team;
+            localStorage.setItem('agro_data', JSON.stringify(storedData));
+        }
     }
     // Always enforce the admin password for hackathon
     localStorage.setItem('agro_users', JSON.stringify(defaultUsers));
