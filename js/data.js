@@ -1,4 +1,9 @@
-// Team data updated for live site
+// ─────────────────────────────────────────────────────────────
+// DATA VERSION — bump this number every time you update content
+// so ALL devices automatically get the fresh data on next load.
+// ─────────────────────────────────────────────────────────────
+const DATA_VERSION = "2.0";
+
 const defaultData = {
     siteName: "🌱 Agro Connect",
     heroTitle: "Empowering the Future of Agriculture",
@@ -54,16 +59,14 @@ const defaultUsers = [
 ];
 
 function initData() {
-    if (!localStorage.getItem('agro_data')) {
+    const storedVersion = localStorage.getItem('agro_data_version');
+
+    // If version is missing or outdated, force a full reset with latest defaults
+    if (storedVersion !== DATA_VERSION) {
         localStorage.setItem('agro_data', JSON.stringify(defaultData));
-    } else {
-        // Force update team if it contains demo members
-        const storedData = JSON.parse(localStorage.getItem('agro_data'));
-        if (storedData.team && storedData.team.some(m => m.name.includes("Team Member"))) {
-            storedData.team = defaultData.team;
-            localStorage.setItem('agro_data', JSON.stringify(storedData));
-        }
+        localStorage.setItem('agro_data_version', DATA_VERSION);
     }
+
     // Always enforce the admin password for hackathon
     localStorage.setItem('agro_users', JSON.stringify(defaultUsers));
 }
